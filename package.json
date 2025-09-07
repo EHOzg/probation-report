@@ -1,0 +1,27 @@
+{
+  "name": "probation-report",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host --port 3000 --open",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.0.1",
+    "@vue-flow/core": "^1.46.3",
+    "echarts": "^6.0.0",
+    "gsap": "^3.13.0",
+    "three": "^0.180.0",
+    "vue": "^3.5.18",
+    "vue-echarts": "^7.0.3",
+    "vue-router": "^4.5.1",
+    "vuedraggable": "^2.24.3"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.1",
+    "sass": "^1.92.1",
+    "vite": "^7.1.2"
+  }
+}
