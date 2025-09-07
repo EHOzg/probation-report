@@ -12,7 +12,7 @@
         </div>
         <div class="chat-content">
           <h4 class="chat-title">{{ dialog.title }}</h4>
-          <p class="chat-text">{{ dialog.description }}</p>
+          <p class="chat-text">{{ dialog.description }}1</p>
         </div>
       </div>
     </div>
