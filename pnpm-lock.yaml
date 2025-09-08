@@ -11,6 +11,9 @@ dependencies:
   '@vue-flow/core':
     specifier: ^1.46.3
     version: 1.46.3(vue@3.5.21)
+  dagre:
+    specifier: ^0.8.5
+    version: 0.8.5
   echarts:
     specifier: ^6.0.0
     version: 6.0.0
@@ -852,6 +855,13 @@ packages:
       d3-transition: 3.0.1(d3-selection@3.0.0)
     dev: false
 
+  /dagre@0.8.5:
+    resolution: {integrity: sha512-/aTqmnRta7x7MCCpExk7HQL2O4owCT2h8NT//9I1OQ9vt29Pa0BzSAkR5lwFUcQ7491yVi/3CXU9jQ5o0Mn2Sw==}
+    dependencies:
+      graphlib: 2.1.8
+      lodash: 4.17.21
+    dev: false
+
   /detect-libc@1.0.3:
     resolution: {integrity: sha512-pGjwhsmsp4kL2RTz08wcOlGN83otlqHeD/Z5T8GXZB+/YcpQ/dgo+lbU8ZsGxV0HIvqqxo9l7mqYwyYMD9bKDg==}
     engines: {node: '>=0.10'}
@@ -937,6 +947,12 @@ packages:
     dev: true
     optional: true
 
+  /graphlib@2.1.8:
+    resolution: {integrity: sha512-jcLLfkpoVGmH7/InMC/1hIvOPSUh38oJtGhvrOFGzioE1DZ+0YW16RgmOJhHiuWTvGiJQ9Z1Ik43JvkRPRvE+A==}
+    dependencies:
+      lodash: 4.17.21
+    dev: false
+
   /gsap@3.13.0:
     resolution: {integrity: sha512-QL7MJ2WMjm1PHWsoFrAQH/J8wUeqZvMtHO58qdekHpCfhvhSL4gSiz6vJf5EeMP0LOn3ZCprL2ki/gjED8ghVw==}
     dev: false
@@ -967,6 +983,10 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /lodash@4.17.21:
+    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
+    dev: false
 
   /magic-string@0.30.18:
     resolution: {integrity: sha512-yi8swmWbO17qHhwIBNeeZxTceJMeBvWJaId6dyvTSOwTipqeHhMhOrz6513r1sOKnpvQ7zkhlG8tPrpilwTxHQ==}
