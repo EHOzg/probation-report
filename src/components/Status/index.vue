@@ -19,6 +19,9 @@
         </div>
       </div>
     </div>
+    <div class="">
+      <Contribution />
+    </div>
   </section>
 </template>
 
@@ -29,6 +32,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import VChart from 'vue-echarts'
 import 'echarts'
 import * as echarts from 'echarts' // For LinearGradient
+import Contribution from '../Contribution/index.vue'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -128,17 +132,17 @@ onMounted(() => {
   })
 
   // Animate cards
-tl.fromTo(
-  '.card',
-  { opacity: 0, y: 50 },
-  {
-    opacity: 1,
-    y: 0,
-    duration: 1,
-    stagger: 0.2,
-    ease: 'back.out(1.7)',
-  }
-)
+  tl.fromTo(
+    '.card',
+    { opacity: 0, y: 50 },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      stagger: 0.2,
+      ease: 'back.out(1.7)',
+    }
+  )
 
   // Hover animations for cards
   const cards = document.querySelectorAll('.card')

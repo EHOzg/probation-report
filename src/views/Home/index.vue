@@ -1,6 +1,9 @@
 ```vue
 <template>
   <div class="home-container">
+    <section class="page">
+      <Culture />
+    </section>
     <section class="page page1">
       <div class="content">
         <div class="avatar"></div>
@@ -60,6 +63,13 @@
     <section class="page">
       <Experience />
     </section>
+    111
+    <section class="page">
+      <Responsibility />
+    </section>
+    <section class="page">
+      <Suggestions />
+    </section>
     <section class="page section-title">
       <div class="avatar"></div>
       <h1 class="gradient-primary font-size-96">未来规划与展望</h1>
@@ -102,6 +112,9 @@ import Advance from '@/components/Advance/index.vue'
 import Weakness from '@/components/Weakness/index.vue'
 import Attitude from '@/components/Attitude/index.vue'
 import Experience from '@/components/Experience/index.vue'
+import Culture from '@/components/Culture/index.vue'
+import Responsibility from '@/components/Responsibility/index.vue'
+import Suggestions from '@/components/Suggestions/index.vue'
 import Career from '@/components/Career/index.vue'
 import Goals from '@/components/Goals/index.vue'
 import NextStep from '@/components/NextStep/index.vue'
