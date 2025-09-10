@@ -1,0 +1,64 @@
+// 媒体查询
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (max-width: 767px) {
+      @content;
+    }
+  } @else if $breakpoint == tablet {
+    @media (min-width: 768px) and (max-width: 1023px) {
+      @content;
+    }
+  } @else if $breakpoint == desktop {
+    @media (min-width: 1024px) {
+      @content;
+    }
+  }
+}
+
+// 文本溢出省略
+@mixin text-ellipsis($lines: 1) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $lines;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// flex 布局
+@mixin flex-center($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+}
+
+// 阴影效果
+@mixin box-shadow($size: md) {
+  @if $size == sm {
+    box-shadow: $shadow-sm;
+  } @else if $size == md {
+    box-shadow: $shadow-md;
+  } @else if $size == lg {
+    box-shadow: $shadow-lg;
+  }
+}
+
+// 圆角
+@mixin border-radius($size: md) {
+  @if $size == sm {
+    border-radius: $border-radius-sm;
+  } @else if $size == md {
+    border-radius: $border-radius-md;
+  } @else if $size == lg {
+    border-radius: $border-radius-lg;
+  }
+}
+
+// 渐变文字
+@mixin gradient-text(
+  $gradient: linear-gradient(135deg, $primary-color, $secondary-color)
+) {
+  background: $gradient;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

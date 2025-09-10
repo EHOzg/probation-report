@@ -40,18 +40,21 @@ const projects = ref([
   {
     title: '银安通',
     description:
-      '金融服务类跨平台应用，支持多端部署，用户账户管理、交易查询等功能。',
+      '1.3.0版本已经上线，60+页面，完成了webview文件上传hybird混合开发、H5二进制流原生处理、websocket实时通讯信息推送等需求。',
     percentage: 100,
-    icon: 'fas fa-check-circle',
+    status: '迭代中',
+    icon: 'fas fa-shield-alt',
     gradient: [
       { offset: 0, color: '#00ffcc' },
       { offset: 1, color: '#ff00cc' },
     ],
   },
   {
-    title: '企业管理系统',
-    description: '内部管理系统，用于员工管理和数据分析，组件化开发。',
-    percentage: 80,
+    title: '广州侦查中心app',
+    description:
+      '1.0.0版本已经上线，完成uni-ui到sard-uniapp的升级、内网开发广播收集第三方应用生物信息收集、tabs + swiper 实现滑动切换、类型也都在迭代中',
+    percentage: 100,
+    status: '迭代中',
     icon: 'fas fa-business-time',
     gradient: [
       { offset: 0, color: '#007bff' },
@@ -59,19 +62,10 @@ const projects = ref([
     ],
   },
   {
-    title: '电商平台',
-    description: '在线购物平台，支持商品展示、购物车和支付功能，响应式设计。',
-    percentage: 90,
-    icon: 'fas fa-shopping-cart',
-    gradient: [
-      { offset: 0, color: '#00ffcc' },
-      { offset: 1, color: '#00d4ff' },
-    ],
-  },
-  {
     title: '其他项目',
-    description: '各种前端优化和维护任务，确保系统稳定和性能提升。',
-    percentage: 95,
+    description:
+      '广州省厅反馈组件、任务详情、广州市局档案信息、银安通web1.2.0、金钟罩地图更换',
+    percentage: 80,
     icon: 'fas fa-tools',
     gradient: [
       { offset: 0, color: '#ffcc00' },

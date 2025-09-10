@@ -1,82 +1,44 @@
 <template>
-  <section class="duty-section">
-    <h1 class="section-title">前端工程师职责</h1>
-    <div class="container">
-      <div class="left-panel">
-        <h4 class="row-title">核心职责</h4>
-        <div class="duties-row">
-          <div
-            v-for="(duty, index) in duties"
-            :key="'duty-' + index"
-            class="card">
-            <div class="card-content">
-              <div class="title-with-icon">
-                <i :class="duty.icon" class="icon"></i>
-                <span class="skill-name">{{ duty.title }}</span>
-              </div>
-              <p class="duty-description">{{ duty.description }}</p>
-            </div>
+  <div
+    class="w-full h-screen flex flex-col justify-center items-center relative overflow-hidden"
+    style="
+      background: linear-gradient(to bottom right, #0c1324, #040813, #0d1425);
+    ">
+    <div class="text-4xl font-bold gradient-text">前端工程师职责</div>
+
+    <div class="flex flex-col gap-4">
+      <h4 class="primary-title">核心职责</h4>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-200">
+        <div
+          v-for="(duty, index) in duties"
+          :key="'duty-' + index"
+          class="card">
+          <div class="flex items-center gap-2.5 mb-3">
+            <i :class="duty.icon" class="primary-icon text-xl"></i>
+            <span class="text-lg text-white">{{ duty.title }}</span>
           </div>
-        </div>
-        <h4 class="row-title">技能掌握</h4>
-        <div class="skills-row">
-          <div v-for="(skill, index) in skills" :key="index" class="card">
-            <div class="card-content">
-              <div class="title-with-icon">
-                <i :class="skill.icon" class="icon"></i>
-                <span class="skill-name">{{ skill.name }}</span>
-                <span class="percentage">{{ skill.percentage }}%</span>
-              </div>
-              <div class="progress-bar">
-                <div
-                  class="progress"
-                  :style="{ width: skill.percentage + '%' }"></div>
-              </div>
-            </div>
-          </div>
+          <p class="text-xs text-muted-white mt-2.5">{{ duty.description }}</p>
         </div>
       </div>
-      <div class="right-panel">
-        <h4 class="row-title">项目技术展示</h4>
-        <div class="projects-container">
-          <div class="projects-row">
-            <div
-              v-for="(project, index) in projects"
-              :key="'project-' + index"
-              class="card project-card">
-              <div class="card-content">
-                <div class="title-with-icon">
-                  <i class="fas fa-project-diagram icon"></i>
-                  <span class="skill-name">{{ project.name }}</span>
-                </div>
-                <p class="project-description">{{ project.description }}</p>
-                <div class="tech-list">
-                  <div
-                    v-for="(tech, techIndex) in project.technologies"
-                    :key="'tech-' + techIndex"
-                    class="tech-item"
-                    :class="'tech-' + techIndex">
-                    <div class="tech-title">
-                      <i :class="tech.icon" class="tech-icon"></i>
-                      <span class="tech-name">{{ tech.name }}</span>
-                    </div>
-                    <div class="progress-container">
-                      <div class="progress-bar">
-                        <div
-                          class="progress"
-                          :style="{ width: tech.percentage + '%' }"></div>
-                      </div>
-                      <span class="percentage">{{ tech.percentage }}%</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+      <h4 class="primary-title">技能掌握</h4>
+      <div class="skills-row">
+        <div v-for="(skill, index) in skills" :key="index" class="card">
+          <div class="card-content">
+            <div class="title-with-icon">
+              <i :class="skill.icon" class="icon"></i>
+              <span class="skill-name">{{ skill.name }}</span>
+              <span class="percentage">{{ skill.percentage }}%</span>
+            </div>
+            <div class="progress-bar">
+              <div
+                class="progress"
+                :style="{ width: skill.percentage + '%' }"></div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script setup>
@@ -88,9 +50,9 @@ import Logo from '../TextLogo/index.vue'
 gsap.registerPlugin(ScrollTrigger)
 
 const skills = ref([
+  { name: 'Vue.js', percentage: 88, icon: 'fab fa-vuejs' },
   { name: 'React', percentage: 95, icon: 'fab fa-react' },
   { name: 'TypeScript', percentage: 90, icon: 'fab fa-js' },
-  { name: 'Vue.js', percentage: 88, icon: 'fab fa-vuejs' },
   { name: 'JavaScript', percentage: 95, icon: 'fab fa-js-square' },
   { name: 'CSS/SCSS', percentage: 92, icon: 'fab fa-css3-alt' },
   { name: 'Node.js', percentage: 85, icon: 'fab fa-node-js' },
@@ -108,7 +70,7 @@ const duties = ref([
   {
     title: '团队协作',
     description:
-      '与UI设计师和后端开发紧密合作，确保页面功能和视觉效果一致，同时高效解决开发中遇到的问题。',
+      '与UI设计和后端开发紧密合作，确保页面功能和视觉效果一致，同时高效解决开发中遇到的问题。',
     icon: 'fas fa-users',
   },
   {
@@ -119,45 +81,7 @@ const duties = ref([
   },
 ])
 
-const projects = ref([
-  {
-    name: '银安通',
-    description:
-      '一个金融服务类跨平台应用，支持多端部署，提供用户账户管理、交易查询等功能，注重性能优化和用户体验。',
-    technologies: [
-      { name: 'Vue.js', percentage: 30, icon: 'fab fa-vuejs' },
-      { name: 'H5+', percentage: 20, icon: 'fab fa-html5' },
-      { name: 'Uniapp', percentage: 20, icon: 'fas fa-mobile-alt' },
-      { name: 'uni-ui', percentage: 20, icon: 'fab fa-node-js' },
-      { name: 'TypeScript', percentage: 10, icon: 'fab fa-js' },
-    ],
-  },
-  {
-    name: '企业管理系统',
-    description:
-      '一个内部管理系统，用于员工管理和数据分析，采用组件化开发，注重代码复用和可维护性。',
-    technologies: [
-      { name: 'React', percentage: 35, icon: 'fab fa-react' },
-      { name: 'TypeScript', percentage: 25, icon: 'fab fa-js' },
-      { name: 'CSS/SCSS', percentage: 20, icon: 'fab fa-css3-alt' },
-      { name: 'Node.js', percentage: 20, icon: 'fab fa-node-js' },
-    ],
-  },
-  {
-    name: '电商平台',
-    description:
-      '一个在线购物平台，支持商品展示、购物车和支付功能，强调响应式设计和快速加载。',
-    technologies: [
-      { name: 'Vue.js', percentage: 30, icon: 'fab fa-vuejs' },
-      { name: 'JavaScript', percentage: 25, icon: 'fab fa-js-square' },
-      { name: 'CSS/SCSS', percentage: 25, icon: 'fab fa-css3-alt' },
-      { name: 'Webpack', percentage: 20, icon: 'fas fa-cogs' },
-    ],
-  },
-])
-
 onMounted(() => {
-  // General card animation for all cards
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: '.duty-section',
@@ -198,11 +122,10 @@ onMounted(() => {
     })
   })
 
-  // Auto-scrolling for project cards
   const projectCards = document.querySelectorAll('.project-card')
   const totalCards = projectCards.length
   if (totalCards > 0) {
-    const cardHeight = projectCards[0].offsetHeight + 20 // Card height + gap
+    const cardHeight = projectCards[0].offsetHeight + 20
     let currentIndex = 0
 
     const scrollProjects = () => {
@@ -217,7 +140,6 @@ onMounted(() => {
       })
     }
 
-    // Initialize the auto-scroll
     scrollProjects()
   }
 })
@@ -254,6 +176,7 @@ onMounted(() => {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 .left-panel {
@@ -264,10 +187,11 @@ onMounted(() => {
 .right-panel {
   width: 30%;
   position: relative;
+  // height: 80%;
 }
 
 .projects-container {
-  height: 400px; /* Fixed height to show one card */
+  // height: 80%;
   overflow: hidden;
   position: relative;
 }
@@ -277,15 +201,6 @@ onMounted(() => {
   flex-direction: column;
   gap: 20px;
   position: relative;
-}
-
-.card {
-  background: #090e1a;
-  border-radius: 12px;
-  padding: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(5px);
 }
 
 .project-card {
@@ -299,48 +214,6 @@ onMounted(() => {
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
   margin-bottom: 2rem;
-}
-
-.card-content {
-  text-align: left;
-}
-
-.title-with-icon {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 12px;
-}
-
-.icon {
-  font-size: 20px;
-  background: linear-gradient(135deg, #00ffcc, #00d4ff);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.row-title {
-  position: relative;
-  font-size: 1.2rem;
-  margin: 1.5rem 0 1rem 0;
-  padding-left: 20px;
-  text-align: left;
-  background: linear-gradient(135deg, #00ffcc, #00d4ff);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  &::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 4px;
-    height: 100%;
-    background: linear-gradient(to bottom, #00ffcc, #00d4ff);
-    border-radius: 2px;
-  }
 }
 
 .skill-name {
@@ -419,6 +292,36 @@ onMounted(() => {
   color: #a0a0a0;
   margin-top: 10px;
   line-height: 1.4;
+}
+
+.commits-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 15px 0;
+  padding: 12px;
+  // background: rgba(0, 255, 204, 0.1);
+  border-radius: 8px;
+  border: 1px solid rgba(0, 255, 204, 0.2);
+}
+
+.commit-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.commit-value {
+  font-size: 18px;
+  font-weight: bold;
+  color: #00ffcc;
+  margin-bottom: 4px;
+}
+
+.commit-label {
+  font-size: 12px;
+  color: #a0a0a0;
 }
 
 /* Gradient styles for skills cards */
@@ -544,54 +447,5 @@ onMounted(() => {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .left-panel,
-  .right-panel {
-    width: 100%;
-    max-width: none;
-  }
-
-  .projects-container {
-    height: 400px;
-  }
-
-  .skills-row,
-  .duties-row {
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  }
-
-  .section-title {
-    font-size: 2rem;
-  }
-
-  .skill-name {
-    font-size: 16px;
-  }
-
-  .project-description,
-  .duty-description {
-    font-size: 13px;
-  }
-
-  .tech-name {
-    font-size: 13px;
-  }
-
-  .tech-icon {
-    font-size: 14px;
-  }
-
-  .percentage {
-    font-size: 11px;
-    min-width: 35px;
-  }
 }
 </style>

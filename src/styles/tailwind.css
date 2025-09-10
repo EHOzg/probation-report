@@ -1,0 +1,16 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-muted-white: #a0a0a0;
+  --color-brand-start: hsl(263, 70%, 50%);
+  --color-brand-end: hsl(142, 76%, 36%);
+  --gradient-brand: linear-gradient(
+    135deg,
+    var(--color-brand-start),
+    var(--color-brand-end)
+  );
+}
+
+@utility bg-brand-gradient {
+  background: var(--gradient-brand);
+}

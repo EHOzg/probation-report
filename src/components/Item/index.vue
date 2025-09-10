@@ -6,7 +6,9 @@
       <div
         class="timeline-track"
         ref="trackRef"
-        :style="{ width: trackWidth + 'px', height: segmentHeight + 'px' }">
+        :style="{ width: trackWidth + 'px', height: segmentHeight + 'px' }"
+        @mouseenter="pauseAnimation"
+        @mouseleave="resumeAnimation">
         <!-- SVG 曲线 -->
         <svg
           class="timeline-svg"
@@ -17,12 +19,12 @@
           <defs>
             <linearGradient
               id="lineGrad"
-              :x1="0"
+              x1="0"
               y1="0"
               :x2="trackWidth"
               y2="0"
               gradientUnits="userSpaceOnUse">
-              <stop offset="50%" stop-color="#00c9ff" />
+              <stop offset="0%" stop-color="#00c9ff" />
               <stop offset="100%" stop-color="#845ef7" />
             </linearGradient>
             <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
@@ -34,20 +36,13 @@
             </filter>
           </defs>
 
+          <!-- Single continuous path for seamless looping -->
           <path
             :d="pathD"
             stroke="url(#lineGrad)"
             stroke-width="4"
             fill="none"
             stroke-linecap="round"
-            filter="url(#glow)" />
-          <path
-            :d="pathD"
-            stroke="url(#lineGrad)"
-            stroke-width="4"
-            fill="none"
-            stroke-linecap="round"
-            :transform="`translate(${segmentWidth},0)`"
             filter="url(#glow)" />
         </svg>
 
@@ -56,7 +51,9 @@
           v-for="(item, index) in timelineData"
           :key="'a-' + index"
           class="work-card a"
-          :style="getCardStyle(index, 0)">
+          :style="getCardStyle(index, 0)"
+          @mouseenter="pauseAnimation"
+          @mouseleave="resumeAnimation">
           <h3>{{ item.title }}</h3>
           <p>
             <i :class="item.icon" class="icon"></i>
@@ -69,7 +66,9 @@
           v-for="(item, index) in timelineData"
           :key="'b-' + index"
           class="work-card b"
-          :style="getCardStyle(index, segmentWidth)">
+          :style="getCardStyle(index, segmentWidth)"
+          @mouseenter="pauseAnimation"
+          @mouseleave="resumeAnimation">
           <h3>{{ item.title }}</h3>
           <p>
             <i :class="item.icon" class="icon"></i>
@@ -82,7 +81,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { gsap } from 'gsap'
 
 const segmentWidth = 1600
@@ -120,19 +119,40 @@ const pathD = `
   M 0,200
   C 280,130 480,270 800,200
   C 1120,130 1320,270 1600,200
+  C 1880,130 2080,270 2400,200
+  C 2720,130 2920,270 3200,200
 `
 
 const getCardStyle = (index, offsetX = 0) => {
   const spacing = segmentWidth / (timelineData.length + 1)
   const x = spacing * (index + 1) + offsetX
-  const y = 200 + Math.sin(index * 0.9) * 70
-  return { left: `${x}px`, top: `${y}px` }
+  const y = 200 + (index % 2 === 0 ? -100 : 100) * Math.sin(index * 0.7)
+  return { left: `${x}px`, top: `${y}px`, transform: 'translate(-50%, -50%)' }
 }
 
 const trackRef = ref(null)
+let animation = null
 
-onMounted(() => {
-  const tl = gsap.timeline({
+const startAnimation = () => {
+  animation = gsap.to(trackRef.value, {
+    x: -segmentWidth,
+    duration: 20,
+    ease: 'linear',
+    repeat: -1,
+    modifiers: {
+      x: (x) => {
+        const val = parseFloat(x) % segmentWidth
+        return `${val}px`
+      },
+    },
+  })
+
+  gsap.from('.work-card.a', {
+    autoAlpha: 0,
+    scale: 0.98,
+    duration: 0.9,
+    stagger: 0.25,
+    ease: 'power3.out',
     scrollTrigger: {
       trigger: '.timeline-section',
       start: 'top 80%',
@@ -140,23 +160,22 @@ onMounted(() => {
       toggleActions: 'play none none reverse',
     },
   })
+}
 
-  tl.from('.work-card.a', {
-    autoAlpha: 0,
-    scale: 0.98,
-    duration: 0.9,
-    stagger: 0.25,
-    ease: 'power3.out',
-  })
+const pauseAnimation = () => {
+  if (animation) animation.pause()
+}
 
-  tl.to(trackRef.value, {
-    x: -segmentWidth,
-    duration: 20,
-    ease: 'linear',
-    repeat: -1,
-    overwrite: true,
-    modifiers: { x: (x) => `${parseFloat(x)}px` },
-  })
+const resumeAnimation = () => {
+  if (animation) animation.play()
+}
+
+onMounted(() => {
+  startAnimation()
+})
+
+onUnmounted(() => {
+  if (animation) animation.kill()
 })
 </script>
 
@@ -166,7 +185,11 @@ onMounted(() => {
   background: linear-gradient(to bottom right, #0c1324, #040813, #0d1425);
   color: #fff;
   overflow: hidden;
-  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .section-title {
@@ -182,18 +205,21 @@ onMounted(() => {
 
 .timeline-wrapper {
   width: 100%;
-  height: 100%;
+  max-width: 1600px;
+  height: 400px;
   overflow: hidden;
   position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 .timeline-track {
   position: absolute;
-  left: 0;
-  top: 0;
+  left: 50%;
+  top: 50%;
+  transform: translateY(-50%);
   height: 100%;
   will-change: transform;
-  transform: translate3d(0, 0, 0);
 }
 
 .timeline-svg {
@@ -211,13 +237,13 @@ onMounted(() => {
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 12px;
   backdrop-filter: blur(6px);
-  transform: translate(-50%, -50%);
   text-align: left;
   color: #e9eef8;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   z-index: 2;
 }
+
 .work-card:hover {
   transform: translate(-50%, -50%) scale(1.04);
   box-shadow: 0 12px 30px rgba(0, 200, 255, 0.18);
@@ -257,14 +283,5 @@ onMounted(() => {
     width: 180px;
     padding: 12px;
   }
-}
-
-.timeline-dot {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: linear-gradient(90deg, #00c9ff, #845ef7);
-  box-shadow: 0 0 6px rgba(0, 201, 255, 0.6);
 }
 </style>
