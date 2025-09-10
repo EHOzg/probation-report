@@ -1,42 +1,11 @@
 <template>
-  <section class="career-improve-section">
-    <h1 class="section-title">前端工程师成长展示</h1>
-    <div class="improve-container">
-      <div
-        v-for="(item, index) in items"
-        :key="index"
-        class="improve-box"
-        :class="index % 2 === 0 ? 'left' : 'right'">
-        <div class="icon-wrapper" :style="{ background: item.color }">
-          <i :class="item.icon"></i>
-        </div>
-        <div class="content-wrapper">
-          <h4 class="item-title">{{ item.title }}</h4>
-          <p class="item-desc">{{ item.description }}</p>
-          <div class="progress-ring">
-            <svg viewBox="0 0 36 36">
-              <circle class="bg" cx="18" cy="18" r="15.9155" />
-              <circle
-                class="progress"
-                cx="18"
-                cy="18"
-                r="15.9155"
-                :stroke-dasharray="item.percent + ', 100'" />
-            </svg>
-            <span class="percent">{{ item.percent }}%</span>
-          </div>
-          <div class="tags">
-            <span
-              v-for="(tag, tIndex) in item.tags"
-              :key="tIndex"
-              class="tag"
-              >{{ tag }}</span
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <div
+    class="w-full h-screen flex flex-col justify-center items-center relative overflow-hidden"
+    style="
+      background: linear-gradient(to bottom right, #0c1324, #040813, #0d1425);
+    ">
+    <div class="section-title">我的不足</div>
+  </div>
 </template>
 
 <script setup>
@@ -118,16 +87,6 @@ onMounted(async () => {
   flex-direction: column;
   align-items: center;
   color: #fff;
-
-  .section-title {
-    font-size: 2.8rem;
-    margin-bottom: 2.5rem;
-    text-align: center;
-    background: linear-gradient(135deg, #00ffcc, #ff00cc);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
 }
 
 .improve-container {

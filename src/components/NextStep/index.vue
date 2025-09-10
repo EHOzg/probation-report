@@ -1,6 +1,6 @@
 <template>
   <section class="work-plan-section">
-    <h1 class="section-title">下一步工作计划</h1>
+    <div class="section-title">下一步工作计划</div>
     <div class="cards-container">
       <div
         v-for="(category, index) in workCategories"

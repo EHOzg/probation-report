@@ -2,10 +2,8 @@
   <section class="thank-you-section">
     <!-- 背景设计 -->
     <div class="bg-design">
-      <span class="year">2025</span>
-      <span class="company">SECXUN</span>
+      <span class="year">2025</span> <span class="company">SECXUN</span>
     </div>
-
     <!-- 中心文字 -->
     <div class="content">
       <h1 class="main-title">汇报结束</h1>
@@ -14,34 +12,6 @@
     </div>
   </section>
 </template>
-
-<script setup>
-import { onMounted } from 'vue'
-import { gsap } from 'gsap'
-
-onMounted(() => {
-  gsap.from('.main-title', {
-    opacity: 0,
-    y: 50,
-    duration: 1,
-    ease: 'power3.out',
-  })
-  gsap.from('.subtitle', {
-    opacity: 0,
-    y: 30,
-    duration: 1,
-    delay: 0.3,
-    ease: 'power3.out',
-  })
-  gsap.from('.description', {
-    opacity: 0,
-    y: 20,
-    duration: 1,
-    delay: 0.6,
-    ease: 'power3.out',
-  })
-})
-</script>
 
 <style scoped lang="scss">
 .thank-you-section {
@@ -56,7 +26,6 @@ onMounted(() => {
   padding: 2rem;
   text-align: center;
 }
-
 .bg-design {
   position: absolute;
   top: 50%;
@@ -65,7 +34,6 @@ onMounted(() => {
   user-select: none;
   pointer-events: none;
 }
-
 .year {
   display: block;
   font-size: 25rem;
@@ -73,7 +41,6 @@ onMounted(() => {
   color: rgba(255, 255, 255, 0.05);
   line-height: 1;
 }
-
 .company {
   display: block;
   font-size: 8rem;
@@ -82,12 +49,10 @@ onMounted(() => {
   margin-top: -2rem; /* 拉近年份和公司缩写 */
   letter-spacing: 1rem;
 }
-
 .content {
   position: relative;
   z-index: 1;
 }
-
 .main-title {
   font-size: 4rem;
   font-weight: 700;
@@ -97,13 +62,11 @@ onMounted(() => {
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
 .subtitle {
   font-size: 2.5rem;
   margin-bottom: 1rem;
   color: #a0a0a0;
 }
-
 .description {
   font-size: 1.2rem;
   color: #a0a0a0;

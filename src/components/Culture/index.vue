@@ -1,28 +1,11 @@
 <template>
-  <section class="center-switcher">
-    <div class="stage">
-      <div
-        class="cards"
-        :style="{
-          transform: `translateY(-${currentIndex * 100}%)`,
-          transition: isTransitioning
-            ? `transform ${duration}ms cubic-bezier(0.25,1,0.5,1)`
-            : 'none',
-        }"
-        @transitionend="handleTransitionEnd">
-        <!-- 正常卡片 -->
-        <div v-for="(item, i) in items" :key="i" class="card">
-          <h3 class="card-title">{{ item.title }}</h3>
-          <p class="card-desc">{{ item.desc }}</p>
-        </div>
-        <!-- 克隆第一张，放在最后 -->
-        <div class="card clone">
-          <h3 class="card-title">{{ items[0].title }}</h3>
-          <p class="card-desc">{{ items[0].desc }}</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <div
+    class="w-full h-screen flex flex-col justify-center items-center relative overflow-hidden"
+    style="
+      background: linear-gradient(to bottom right, #0c1324, #040813, #0d1425);
+    ">
+    <div class="section-title">对企业文化的理解</div>
+  </div>
 </template>
 
 <script setup>
@@ -111,17 +94,6 @@ onBeforeUnmount(stop)
   height: 100%;
   display: flex;
   flex-direction: column;
-}
-
-.card {
-  flex: 0 0 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 40px;
-  box-sizing: border-box;
 }
 
 .card-title {

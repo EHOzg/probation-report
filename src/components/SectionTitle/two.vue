@@ -15,8 +15,8 @@
       <!-- 标题文字 -->
       <div class="flex flex-col gap-2">
         <div class="text-8xl font-bold gradient-text">试用期自我评价</div>
-        <div class="mt-2 text-2xl text-muted-white">
-          展示我在前端开发领域的技能成长、项目经验与技术贡献
+        <div class="mt-2 text-2xl text-muted-white text-end">
+          分析自我能力与优劣势
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 ```vue
 <template>
   <section class="self-study-section">
-    <h1 class="section-title">自组学习情况</h1>
+    <div class="section-title">自组学习情况</div>
     <div class="mindmap-container">
       <VueFlow
         :nodes="nodes"

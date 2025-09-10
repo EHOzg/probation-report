@@ -1,6 +1,6 @@
 <template>
   <section class="work-completion-section">
-    <h1 class="section-title">工作完成情况</h1>
+    <div class="section-title">工作完成情况</div>
     <div class="cards-container">
       <div
         v-for="(project, index) in projects"

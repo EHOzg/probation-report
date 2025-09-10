@@ -1,25 +1,11 @@
 <template>
-  <section class="work-insight-section">
-    <h1 class="section-title">工作心得</h1>
-    <div class="insights-container">
-      <div
-        v-for="(insight, index) in insights"
-        :key="index"
-        class="insight-card"
-        :class="index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'">
-        <!-- 插画 -->
-        <div class="insight-illustration">
-          <img :src="insight.image" alt="illustration" />
-        </div>
-
-        <!-- 内容 -->
-        <div class="insight-content">
-          <h3 class="insight-title">{{ insight.title }}</h3>
-          <p class="insight-text">{{ insight.text }}</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <div
+    class="w-full h-screen flex flex-col justify-center items-center relative overflow-hidden"
+    style="
+      background: linear-gradient(to bottom right, #0c1324, #040813, #0d1425);
+    ">
+    <div class="section-title">工作心得</div>
+  </div>
 </template>
 
 <script setup>
@@ -53,16 +39,6 @@ const insights = ref([
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.section-title {
-  font-size: 2.8rem;
-  font-weight: bold;
-  margin-bottom: 3rem;
-  background: linear-gradient(135deg, #00ffcc, #00d4ff);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .insights-container {

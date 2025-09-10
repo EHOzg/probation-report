@@ -1,29 +1,11 @@
 <template>
-  <section class="responsibility-section">
-    <h1 class="section-title">对责任的理解</h1>
-    <div class="container">
-      <div class="responsibility-grid">
-        <div
-          v-for="(duty, index) in duties"
-          :key="'duty-' + index"
-          class="responsibility-card"
-          @mouseenter="flipCard(index)"
-          @mouseleave="resetCard(index)"
-          @click="toggleFlip(index)">
-          <div class="card-inner" :class="{ flipped: flippedCards[index] }">
-            <div class="card-front">
-              <i :class="duty.icon" class="duty-icon"></i>
-              <h3>{{ duty.title }}</h3>
-            </div>
-            <div class="card-back">
-              <h3>{{ duty.title }}</h3>
-              <p>{{ duty.description }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <div
+    class="w-full h-screen flex flex-col justify-center items-center relative overflow-hidden"
+    style="
+      background: linear-gradient(to bottom right, #0c1324, #040813, #0d1425);
+    ">
+    <div class="section-title">对责任的理解</div>
+  </div>
 </template>
 
 <script setup>
@@ -98,16 +80,6 @@ onMounted(() => {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-.section-title {
-  font-size: 2.8rem;
-  background: linear-gradient(135deg, #00f7ff, #ff00cc);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 2.5rem;
-  text-align: center;
 }
 
 .container {
