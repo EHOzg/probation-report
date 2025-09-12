@@ -16,7 +16,7 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 import Start from '@/components/Start/index.vue'
 import TitleSectionOne from '@/components/SectionTitle/one.vue'
 import Duty from '@/components/Duty/index.vue'
-import MainItem from '@/components/Item/index.vue'
+import TimeLine from '@/components/TimeLine/index.vue'
 import Study from '@/components/Study/index.vue'
 import Status from '@/components/Status/index.vue'
 import TitleSectionTwo from '@/components/SectionTitle/two.vue'
@@ -40,7 +40,7 @@ const pages = ref([
   Start,
   TitleSectionOne,
   Duty,
-  MainItem,
+  TimeLine,
   Study,
   Status,
   TitleSectionTwo,
